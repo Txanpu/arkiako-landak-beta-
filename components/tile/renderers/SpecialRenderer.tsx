@@ -13,26 +13,40 @@ export const SpecialRenderer: React.FC<Props> = ({ tile, config, textRot }) => {
     
     if (tile.type === TileType.QUIZ) {
         return (
-            <div className={`absolute inset-0 flex flex-col items-center justify-center overflow-hidden border-2 border-yellow-500 bg-slate-900 ${config.isDiagonal ? '' : textRot}`}>
+            <div className={`absolute inset-0 flex flex-col items-center justify-center overflow-hidden border-2 border-yellow-400 bg-slate-900 ${config.isDiagonal ? '' : textRot} shadow-[0_0_10px_rgba(234,179,8,0.3)]`}>
                 {/* TV Studio Background */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-800 via-indigo-950 to-black"></div>
-                {/* Scanlines Effect */}
-                <div className="absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent,transparent_1px,#000_1px,#000_3px)] opacity-20 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_var(--tw-gradient-stops))] from-blue-700 via-slate-900 to-black"></div>
+                
+                {/* CRT Scanlines Effect */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-0 bg-[length:100%_2px,3px_100%] pointer-events-none opacity-60"></div>
                 
                 {/* "LIVE" Badge */}
-                <div className="z-10 absolute top-1 right-1 bg-red-600 text-white text-[5px] font-black px-1 rounded animate-pulse shadow-[0_0_5px_red]">
-                    EN VIVO
+                <div className="absolute top-1 right-1 bg-red-600 text-white text-[5px] font-black px-1 rounded animate-pulse shadow-[0_0_5px_red] z-20 flex items-center gap-0.5 border border-red-400">
+                    <div className="w-1 h-1 bg-white rounded-full animate-ping"></div> LIVE
                 </div>
 
-                <div className="text-3xl z-10 filter drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]">📺</div>
-                
-                <div className="z-10 text-center mt-1">
-                    <div className="text-[6px] text-yellow-400 font-bold uppercase tracking-widest leading-none">MALDINI</div>
-                    <div className="text-[9px] font-black text-white uppercase tracking-tight leading-none drop-shadow-md">QUIZ</div>
+                {/* Icon Group */}
+                <div className="relative z-10 mb-1 group flex items-center justify-center">
+                    <div className="text-3xl filter drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transform group-hover:scale-110 transition-transform duration-300">⚽</div>
+                    <div className="absolute -bottom-1 -right-1 text-lg rotate-12 filter drop-shadow-md">🎤</div>
                 </div>
                 
-                {/* Stage Lights */}
-                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-blue-500/20 to-transparent"></div>
+                {/* Logo Text */}
+                <div className="z-10 text-center relative flex flex-col items-center">
+                    <div className="text-[5px] text-black bg-yellow-400 px-1 font-black uppercase tracking-widest leading-none transform -skew-x-12 inline-block mb-0.5 border border-white shadow-sm">
+                        MALDINI
+                    </div>
+                    <div className="text-[10px] font-black text-white italic uppercase tracking-tighter leading-none drop-shadow-[2px_2px_0_#000] text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-300 font-sans">
+                        QUIZ
+                    </div>
+                </div>
+                
+                {/* News Ticker Bar */}
+                <div className="absolute bottom-0 w-full h-2.5 bg-blue-900 border-t border-blue-500 flex items-center justify-center overflow-hidden z-10">
+                    <div className="text-[4px] text-cyan-300 font-mono uppercase tracking-widest whitespace-nowrap animate-pulse">
+                        >>> FÚTBOL INTERNACIONAL >>>
+                    </div>
+                </div>
             </div>
         );
     }

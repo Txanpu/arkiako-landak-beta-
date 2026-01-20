@@ -62,7 +62,7 @@ export const TileContent: React.FC<TileContentProps> = ({ tile, config, isMortga
     // --- 4. SPECIAL TILE OVERRIDES (Jail, Bank, etc) ---
     // If SpecialRenderer returns null, it falls through to Standard
     if (
-        [TileType.GOTOJAIL, TileType.JAIL, TileType.BANK, TileType.SLOTS, TileType.PARK].includes(tile.type) || 
+        [TileType.GOTOJAIL, TileType.JAIL, TileType.BANK, TileType.SLOTS, TileType.PARK, TileType.QUIZ].includes(tile.type) || 
         tile.name === 'Suerte' || 
         tile.name.includes('Comunidad') ||
         tile.subtype === 'greyhound' // Added greyhound check here
